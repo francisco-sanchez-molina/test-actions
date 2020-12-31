@@ -18,6 +18,7 @@ jobs:
       - name: Run a one-line script
         run: sleep ${{ matrix.app }} && echo Hello, world ${{ matrix.app }}!
   afterBuild:
+    needs: [build]    
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
