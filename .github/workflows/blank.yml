@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        app: [40,27,33]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: sleep ${{ matrix.app }} && echo Hello, world ${{ matrix.app }}!
+  afterBuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo finish!
